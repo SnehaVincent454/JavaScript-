@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="" content=""/>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <form onsubmit = "return false";>
+            <label for="firstName">First Name: </label>
+            <input name="FN" id="firstName" type="text"/>
+
+        </br>
+
+
+            <label for="lastName">Last Name: </label>
+            <input name="LN" id="lastName" type="text"/>
+
+        </br>
+
+
+            <label for="phoneNumber">Phone Number: </label>
+            <input name="PN" id="phoneNumber" type="tel"/>
+
+
+        </br>
+
+
+        </br>
+
+
+
+            <button id="button" onclick="myFunction">Add</button>
+        </form>
+         <br/>
+        <table id="output">
+            <tr >
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+            </tr>
+
+        </table> 
+        <script>
+            //decalring the variable...
+            const  button = document.getElementById('button');
+            const FN = document.getElementById('firstName');
+            const LN = document.getElementById('lastName');
+            const PN = document.getElementById('phoneNumber');
+            const output = document.getElementById('output');
+
+            // This myFunctions  displays the input into the table.
+            function myFunction(){
+
+            //Insert Adjacent Html -- insets a data into the table
+
+               output.insertAdjacentHTML('beforeend',`<tr>
+                    <td>${FN.value}</td>
+                    <td>${LN.value}</td>
+                    <td>${PN.value}</td>
+                
+                
+                </tr>`);
+                
+
+                console.log(FN.value);
+                console.log(LN.value);
+                console.log(PN.value);
+
+            }
+            button.addEventListener('click',()=>{
+
+                myFunction()
+                
+            })
+
+
+
+
+
+        </script>
+    </body>
+</html>

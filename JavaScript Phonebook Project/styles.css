@@ -1,0 +1,22 @@
+table,td, th{
+
+    border:1px solid black;
+
+    border-collapse: collapse;
+
+}
+
+body{
+    position:relative;
+}
+
+
+.sideBar{
+
+    position: absolute;
+
+    right:0px;
+
+    top: 0px;
+
+}
