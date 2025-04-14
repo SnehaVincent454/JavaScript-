@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="return false">
+        <label for="SN">Starting Number</label>
+        <input id="SN" name="SN" type="number"/>
+        <br>
+        <label for="MN">Maximum Number</label>
+        <input id="MN" name="MN" type="number" />
+        <br>
+        <label for="IN">Number that you would like to Increment:</label>
+        <input id="IN" name="IN" type="number" />
+        <br>
+        <button onclick="submitBtn()">Submit</button>
+    </form>
+    <div>
+        <p  id="show" ></p>
+    </div>
+
+    <script>
+
+        let display= document.getElementById('show');
+
+        const SN = document.getElementById('SN');
+
+        const MN = document.getElementById('MN');
+
+        const IN = document.getElementById('IN');
+
+
+        function submitBtn(){
+            display.innerHTML += '<br>'
+            if (Number(IN.value)>0 && Number(MN.value)>Number(SN.value)){
+                for( let i = Number(SN.value) ; i < Number(MN.value); i += Number(IN.value)){
+                    console.log(i);
+                    display.innerHTML += (`${i} ,`); 
+            }
+        }
+
+
+            else if(Number(IN.value)>0 &&Number(MN.value)<Number(SN.value)){
+                for( let i = Number(SN.value) ; i > Number(MN.value); i -= Number(IN.value)){
+                console.log(i);
+                display.innerHTML += (`${i} ,`); 
+            }
+            }
+
+            
+            else if(Number(IN.value)<0 && Number(MN.value)<Number(SN.value)){
+                for( let i = Number(SN.value) ; i > Number(MN.value); i += Number(IN.value)){
+                console.log(i);
+                display.innerHTML += (`${i} ,`); 
+            }
+            }
+
+
+            else{
+                console.log('error')
+                display.innerHTML += ('error'); 
+            }
+
+        }
+    </script>
+</body>
+</html>
