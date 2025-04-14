@@ -25,9 +25,10 @@ input{
     border-style:solid;
     border:none;
     border-bottom:1px solid white;
-
+    color:white;
     background: none;
-
+    text-align: center;
+    
 }
 
 .sideBar{
