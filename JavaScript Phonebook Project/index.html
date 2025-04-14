@@ -5,34 +5,39 @@
         <meta name="" content=""/>
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
-    <body>
+    <body><div class="container">
+
         <form onsubmit = "return false";>
-            <label for="firstName">First Name: </label>
-            <input name="FN" id="firstName" type="text"/>
+        <h1>Phonebook</h1>           
+        <label for="firstName">First Name: </label>         </br>
+            <input name="FN" id="firstName" type="text" required/>
+
+        </br>
+        </br>
+
+
+            <label for="lastName">Last Name: </label>         </br>
+            <input name="LN" id="lastName" type="text" required/>
+
+        </br>
+        </br>
+
+
+            <label for="phoneNumber">Phone Number: </label>         </br>
+            <input name="PN" id="phoneNumber" type="tel" required/>
+
 
         </br>
 
 
-            <label for="lastName">Last Name: </label>
-            <input name="LN" id="lastName" type="text"/>
-
-        </br>
-
-
-            <label for="phoneNumber">Phone Number: </label>
-            <input name="PN" id="phoneNumber" type="tel"/>
-
-
-        </br>
-
-
         </br>
 
 
 
-            <button id="button" onclick="myFunction">Add</button>
+            <button id="button">Add</button>
         </form>
          <br/>
+         <p id="blank"></p>
         <table id="output">
             <tr >
                 <th>First Name</th>
@@ -40,19 +45,30 @@
                 <th>Phone Number</th>
             </tr>
 
-        </table> 
+        </table> </div>
         <script>
             //decalring the variable...
             const  button = document.getElementById('button');
+            const  blank = document.getElementById('blank');
             const FN = document.getElementById('firstName');
             const LN = document.getElementById('lastName');
             const PN = document.getElementById('phoneNumber');
             const output = document.getElementById('output');
 
-            // This myFunctions  displays the input into the table.
-            function myFunction(){
+            // myFunctions  displays the input into the table.
+            function myFunction(event){
 
             //Insert Adjacent Html -- insets a data into the table
+               event.preventDefault();
+               if (!FN.value || !LN.value || !PN.value){
+                    blank.textContent = "*Fill out ALL the Blank*" ;
+                    blank.style.color = "red" 
+                    blank.style.backgroundColor = "rgb(0, 23, 49)" 
+
+               }
+               else{
+                blank.textContent = "";
+                blank.style.backgroundColor = "white" 
 
                output.insertAdjacentHTML('beforeend',`<tr>
                     <td>${FN.value}</td>
@@ -61,16 +77,16 @@
                 
                 
                 </tr>`);
-                
+                }}
 
                 console.log(FN.value);
                 console.log(LN.value);
                 console.log(PN.value);
 
-            }
+            
             button.addEventListener('click',()=>{
 
-                myFunction()
+                myFunction(event)
                 
             })
 
