@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="veiwport" content="width = device-width , initial=1.0"/>
+        <link rel="stylesheet" href="styles.css"/>
+        <title>Javascript Gradebook</title>
+    </head>
+    <body>
+        <form id="form" onsubmit="return false">
+            <fieldset>
+                <legend>Gradebook</legend>
+                
+                <label for="fn">First Name</label>
+                <input name="fn" id="fn" type="text"  required/>
+            </br>
+                <label for="ln">Last Name</label>
+                <input name="ln" id="ln" type="text" required/>
+            </br>
+                <label for="g1">Grade 1</label>
+                <input name="g1" id="g1" type="number" max="100"  required/>
+            </br>
+                <label for="g2">Grade 2</label>
+                <input name="g2" id="g2" type="number" max="100"  required/>
+            </br>
+                <label for="g3">Grade 3</label>
+                <input name="g3" id="g3" type="number" max="100"  required/>
+            </br>
+            </br>
+                <button id="btn" onclick="Calculate()">Calculate</button>
+
+
+            </fieldset>
+            <fieldset id="output">
+                <legend >Output</legend>
+                <h4>Full Name:</h4>
+                <p>Grade 1:</p>
+                <p>Grade 2:</p>
+                <p>Grade 3:</p>
+                <p>Average:</p>
+                <p>Letter Grade:</p>
+            </fieldset>
+
+
+
+
+        </form>    
+
+
+        <script>
+
+
+
+
+
+            //decalaring variable
+            const fn = document.getElementById('fn');
+            const ln = document.getElementById('ln');
+            const g1 = document.getElementById('g1');
+            const g2 = document.getElementById('g2');
+            const g3 = document.getElementById('g3');
+            const output = document.getElementById('output');
+
+            
+
+
+
+
+
+
+
+
+
+
+
+            /*----------This is the blue print for an object:
+            this.nameFirst --- this, in the code represensts the object Person. The nameFirst is the property for the object. This property is equal to the function's perimeter-------------*/
+            function Person(nameFirst,nameLast,grade1,grade2,grade3) {
+            this.nameFirst = nameFirst,
+            this.nameLast = nameLast,
+            this.grade1 = grade1,
+            this.grade2 =  grade2,
+            this.grade3 = grade3
+        }
+        
+
+        
+        function Display( grade1, grade2,grade3, avg, lg, nameFirst, nameLast){
+            output.innerHTML += "<br><h4>First Name:" + "&nbsp;" +  `${nameFirst}`+" " +`${nameLast}`+"</h4>"
+
+            output.innerHTML += "<p>Grade 1:" + " " + `${grade1}`+"%"+"</p>"
+
+            output.innerHTML += "<p>Grade 2:" + " " + `${grade2}`+"%"+"</p>"
+
+            output.innerHTML += "<p>Grade 3:" + " " + `${grade3}`+"%"+"</p>"
+
+            output.innerHTML += "<p>Average:" + " " + `${avg}`+"%"+"</p>"
+
+            output.innerHTML += "<p>Letter Grade:" + " " + `${lg}`+"</p>"
+        }
+
+
+
+        //letter grade if then statement: determines the letter grade that a person gets based on the grade average through an if than statement as well as the && operator. 
+         
+        function LetterGrade(avg){
+            let person01 = new Person(fn.value, ln.value, g1.value, g2.value, g3.value)
+           if (avg >= 90){
+            lg = "A";
+            console.log("A")
+
+
+           }
+           else if(avg < 90 && avg >= 80){
+            lg = "B";
+
+            console.log("B")
+           }
+           else if(avg < 80 && avg >= 70){
+            lg = "C";
+
+            console.log("c")
+           }
+           else if(avg < 70 && avg >= 60){
+            lg = "D";
+
+            console.log("D")
+           }
+           else if( avg < 60){
+            lg = "F";
+
+            console.log("F")
+           }
+           else{
+            console.log("error")
+           }
+            Display(person01.grade1,person01.grade2,person01.grade3, avg, lg,person01.nameFirst, person01.nameLast)           
+    }        
+
+
+    //calculating average
+        function Average(grade1,grade2,grade3){
+        avg = (grade1 + grade2 + grade3) /3 
+        LetterGrade(avg.toFixed(2))
+ 
+        return console.log(avg)        
+        }
+
+
+        function Calculate(){
+
+            //the if else statement checks if all the blanks have a value. 
+
+            if(!fn.value || !ln.value || !g1.value || !g2.value || !g3.value ){
+                output.textContent = "Fill in the All Blank";
+            }
+            else{
+                output.textContent="";
+                output.innerHTML = "<legend >Output</legend>";
+                //The new Person() essentially acts like a new Object() and it creates a new object following the blueprint set by the Person Function. the Person function has a blueprint for object and it assigns the property's value to the perimeters. This is called a bulit-in constructors.
+                let person01 = new Person(fn.value, ln.value, Number(g1.value),Number(g2.value), Number(g3.value))
+
+            // If it doesn't it will output a text saying to fill in the all the blank. 
+            // If ALL the blanks are filled than the text (Fill in the All Blank ) would diappear and the information would appear in the output.   
+
+                console.log(person01.nameFirst);
+                console.log(person01.grade1)
+                Average(person01.grade1, person01.grade2, person01.grade3)
+            }
+        }
+        
+          
+
+        </script>
+    </body>
+</html>
