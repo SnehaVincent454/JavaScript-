@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0"/>
+        <link rel="stylesheet" href="styles.css" type="text/css" />
+        <title>JavaScript Temperature Conversion</title>
+    </head>
+    <body>
+        <form onsubmit="return false">
+            <label for="TC">Temperature Conversion</label>
+            <input type="number" id="TC" name="TC"/>
+            <br/>
+            <label for="from">From:</label>
+            <br/>
+            <select id="from">
+                <option value=""></option>
+                <option value="Fahrenheit">Fahrenheit</option>
+                <option value="Celsius">Celsius</option>
+            </select>
+            <br/>
+            <label for="to">To:</label>
+            <br/>
+            <select id="to">
+                <option id="to"value=""></option>
+                <option id="to"value="Fahrenheit">Fahrenheit</option>
+                <option id="to"value="Celsius">Celsius</option>
+            </select>
+            <br/>
+            <br/>
+            <button id="btn" onclick="submitBtn()">Submit</button>
+            <p id="result">Select a Unit</p>
+        </form>
+
+
+
+        <script>
+            const TC = document.getElementById('TC');            
+            const from = document.getElementById('from');
+            const to = document.getElementById('to');
+            function submitBtn(){
+                let temp = Number(TC.value);
+                
+               if(from.value == "Fahrenheit"  && to.value == "Celsius"){
+                console.log('works!');
+
+                temp = (temp - 32) * (5/9);
+
+                result.textContent = temp.toFixed(1) + "c"
+
+
+
+                // (# - 32) * (5/9) ----> calculation for  Fahrenheit  to Celsius
+            }
+               else if(from.value == "Celsius"  && to.value == "Fahrenheit"){
+                console.log('works!!');
+
+
+                temp = temp * 9 / 5 +32;
+
+                result.textContent = temp.toFixed(1)+"F";
+                
+                
+                
+                
+                
+                
+                // # * 9 / 5 +32 ---> calculation for Celsius to Fahrenheit
+            }
+            else if(!from.value || !to.value){
+                console.log('Select a unit');
+                result.textContent= "Select a Unit"
+            }
+               else{
+                console.log('error');
+                result.textContent="Error";
+            }
+            }
+
+        </script>
+    </body>
+</html>
