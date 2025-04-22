@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<htmL>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Javascript Exponenets</title>
+    </head>
+
+    <body>
+        <form onsubmit="return false">
+
+            <label for="FO">First operand</label>
+            <input type="number" id="FO" name="FO"/> <!--Base-->
+            <label for="SO">Second operand</label>
+            <input type="number" id="SO" name="SO"/> <!--Exponenet-->
+            <button id='btn' onclick="submitBtn()">Submit</button>
+            
+        </form>
+        <p id="result"> Result:</p>
+
+
+
+        <script>
+            const FO = document.getElementById('FO');
+            const SO = document.getElementById('SO');
+            const result = document.getElementById('result');
+            function submitBtn(){
+            // ** is the exponent operator
+            const ans = `${Number(FO.value) ** Number(SO.value)}`;
+
+            result.innerHTML += " " + ans  + ",  ";
+            
+        }
+        </script>
+    </body>
+</htmL>
