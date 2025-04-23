@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="veiwport" content="width=width-device, initial-scale = 1.0"/>
+    </head>
+    <body>
+        <form onsubmit="return false">
+            <label for="hourWage" >Hourly Wages: </label>
+            </br> 
+            <input name="hourWage" id="hourWage" type="number"/>  
+
+            </br> 
+            </br>          
+
+            <label for="hourWorked">Hourly Worked: </label>
+            </br> 
+            <input name="hourWorked" id="hourWorked" type="number"/>  
+            </br> 
+            <button id="OW" onclick="Calculate()">Overtime Wage</button>
+        </form>
+            <p id="result">Type the number of hours worked.</p>
+        <script>
+            const hourlyWage = document.getElementById('hourWage');
+            const hoursWorked = document.getElementById('hourWorked');
+            const result = document.getElementById('result');
+
+            function Calculate(){
+        
+            if(hoursWorked.value > 40){
+            const overtime = hoursWorked.value - 40;
+            const avgHour = hoursWorked.value - overTime;    // avgHour ---> is the 40 hour worked before the overtime.
+
+                const regularPay = (avgHour * Number(hourlyWage.value)); // 40 x regular hourly wage
+
+                const payWithOvertime = overtime * (hourlyWage.value * 1.5 ); // overtime hour multiplied by the overtime pay .
+                
+                const grossPay = regularPay + payWithOvertime; 
+
+                console.log(` Gross Pay : ${grossPay}`)
+                result.textContent= `Your Gross Pay is ${grossPay}`;
+            }
+            else if(hoursWorked.value <= 40){
+                let regularPay = Number(hoursWorked.value) * Number(hourlyWage.value);
+                console.log("No overtime. Regular pay: " + regularPay);
+                result.textContent = `No overtime. Regular pay: ${regularPay}`;
+            }
+            }
+        </script>
+    </body>
+</html>
